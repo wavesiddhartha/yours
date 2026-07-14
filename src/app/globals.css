@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F6F3EA;
+  --card: #FFFDF8;
+  --text-primary: #171717;
+  --text-secondary: #666666;
+  --border: #ECE7DC;
+  --accent: #C9A86A;
+  --hover: #EFE8D8;
+  --success: #3CB371;
+  --error: #E24C4B;
+}
+
+:root.dark {
+  --background: #181715;
+  --card: #201E1B;
+  --text-primary: #F4EFE6;
+  --text-secondary: #9B9485;
+  --border: #2C2A25;
+  --accent: #D6B87D;
+  --hover: #2A2823;
+  --success: #48C780;
+  --error: #E85B5A;
+}
+
+@theme {
+  --color-background-warm: var(--background);
+  --color-card-warm: var(--card);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-warm: var(--border);
+  --color-accent-gold: var(--accent);
+  --color-hover-warm: var(--hover);
+  --color-success-green: var(--success);
+  --color-error-red: var(--error);
+  --font-inter: var(--font-inter), sans-serif;
+}
+
+/* Base resets & typography */
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Typing cursor animation */
+.streaming-cursor::after {
+  content: '▋';
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Smooth gradient thinking glow */
+@keyframes warm-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.thinking-glow {
+  background: radial-gradient(circle, rgba(201, 168, 106, 0.15) 0%, rgba(246, 243, 234, 0) 70%);
+  animation: warm-pulse 2s ease-in-out infinite;
+}
+
+.dark .thinking-glow {
+  background: radial-gradient(circle, rgba(214, 184, 125, 0.12) 0%, rgba(24, 23, 21, 0) 70%);
+}
+
+/* Glassmorphic elements */
+.glass-panel {
+  background: rgba(255, 253, 248, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.dark .glass-panel {
+  background: rgba(32, 30, 27, 0.7);
+  border: 1px solid var(--border);
+}
